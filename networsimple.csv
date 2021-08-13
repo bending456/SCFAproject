@@ -1,10 +1,4 @@
 StartNode,Edge,EndNode
-CCL5,up-regulates,CCR3
-Anti-CD81,up-regulates,CD81
-CCR3,up-regulates,JAK2
-CCR3,up-regulates,PI3K
-CD81,up-regulates,PI3K
-EGFR,up-regulates,GAB1
 EGFR,up-regulates,GRB2
 EGF,up-regulates,EGFR
 HRAS,up-regulates,BRAF
