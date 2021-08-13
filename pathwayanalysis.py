@@ -4,7 +4,7 @@ from networkx.drawing.nx_agraph import graphviz_layout
 from graphviz import Digraph
 from IPython.display import Image
 import networkx as nx
-import request
+import requests
 
 def dataextract(filename):
     
