@@ -2,81 +2,43 @@ StartNode,Edge,EndNode
 MAPK8,up-regulates,IRF3
 MAP2K6,up-regulates activity,MAP2K6
 MAP2K6,up-regulates activity,MAPK14
-MAP2K6,up-regulates activity,MAPK14
-MAP2K6,up-regulates activity,MAPK14
-MAP2K6,up-regulates activity,MAPK14
-MAP2K7,up-regulates,MAPK8
-MAP2K7,up-regulates,MAPK8
 MAP2K7,up-regulates,MAPK8
 SARM1,down-regulates,TICAM1
 TICAM2,up-regulates activity,TICAM1
 MAP2K3,up-regulates activity,MAPK14
-MAP2K3,up-regulates activity,MAPK14
-MAP2K3,up-regulates activity,MAPK14
-MAP2K3,up-regulates activity,MAPK14
-MAP2K3,up-regulates activity,MAPK14
 TBK1,down-regulates quantity by destabilization,NFKBIA
-TBK1,up-regulates activity,IRF3
-TBK1,up-regulates activity,IRF3
-TBK1,up-regulates activity,IRF3
-TBK1,up-regulates activity,IRF3
-TBK1,up-regulates activity,IRF3
-TBK1,up-regulates activity,IRF3
-TBK1,up-regulates activity,IRF3
 TBK1,up-regulates activity,IRF3
 TBK1,up-regulates activity,IKBKE
 TICAM1,up-regulates activity,TBK1
 MYD88,up-regulates activity,IRAK1
 TIRAP,up-regulates activity,MYD88
-TIRAP,up-regulates activity,MYD88
 MAP3K1,up-regulates,MAP2K6
-MAP3K1,up-regulates,MAP2K7
 MAP3K1,up-regulates,MAP2K7
 MAP3K1,up-regulates activity,MEK1/2
 MAP3K8,up-regulates,MEK1/2
-MAP3K8,up-regulates,MEK1/2
 TRAF6,up-regulates activity,MAP3K8
 TRAF6,up-regulates activity,MAP3K7
-TRAF6,up-regulates activity,TRAF6
-TRAF6,up-regulates activity,TRAF6
-IRAK1,up-regulates activity,TRAF6
 IRAK1,up-regulates activity,TRAF6
 AP1,up-regulates activity,Immune_response
 IRF3,up-regulates,Immune_response
 IRF3,up-regulates,Interferon_Production
 ERK1/2,up-regulates,AP1
 MEK1/2,up-regulates,ERK1/2
-PAMPs,up-regulates,TLRs
-TLRs,up-regulates activity,TICAM2
-TLRs,up-regulates activity,TIRAP
-TLRs,up-regulates activity,TICAM1
-TLRs,up-regulates activity,TLRs
-DAMPS,up-regulates activity,TLRs
+TLR4,up-regulates activity,TICAM2
+TLR4,up-regulates activity,TIRAP
+TLR4,up-regulates activity,TICAM1
+LPS,up-regulates activity,TLRs
 MAP3K7,down-regulates quantity by destabilization,NFKBIA
 MAP3K7,up-regulates activity,MAP2K6
 MAP3K7,up-regulates activity,MAP2K6
 MAP3K7,up-regulates activity,IKK-complex
-MAP3K7,up-regulates,IKK-complex
-MAP3K7,up-regulates,IKK-complex
 MAP3K7,up-regulates activity,MAP2K3
-MAP3K7,up-regulates activity,MAP2K3
-MAP3K7,up-regulates activity,NfKb-p65/p50
-IKBKE,down-regulates quantity by destabilization,NFKBIA
+MAP3K7,up-regulates activity,NFKB1
 IKBKE,down-regulates quantity by destabilization,NFKBIA
 IKBKE,up-regulates activity,IRF3
-IKBKE,up-regulates activity,IRF3
-IKBKE,up-regulates activity,IRF3
-IKBKE,up-regulates activity,IRF3
-IKBKE,up-regulates activity,IRF3
-IKBKE,up-regulates activity,IRF3
-IKBKE,up-regulates activity,IRF3
-IKBKE,up-regulates activity,NfKb-p65/p50
+IKBKE,up-regulates activity,NFKB1
 IKK-complex,down-regulates,NFKBIA
-IKK-complex,down-regulates,NFKBIA
-IKK-complex,down-regulates,NFKBIA
-IKK-complex,down-regulates quantity by destabilization,NFKBIA
-IKK-complex,up-regulates,NfKb-p65/p50
-NfKb-p65/p50,up-regulates,Immune_response
-NfKb-p65/p50,up-regulates,Interferon_Production
-NFKBIA,down-regulates activity,NfKb-p65/p50
-NFKBIA,down-regulates activity,NfKb-p65/p50
+IKK-complex,up-regulates,NFKB1
+NFKB1,up-regulates,Immune_response
+NFKB1,up-regulates,Interferon_Production
+NFKBIA,down-regulates activity,NFKB1
