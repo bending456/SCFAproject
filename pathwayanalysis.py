@@ -33,9 +33,9 @@ def dataextract(filename):
 def drawerForAll(data):
     G = Digraph('G', filename='all.gv',format='png',
               node_attr={'color': 'lightblue2', 'style': 'filled','shape':'box'})
-    start = data[data.keys[0]]
-    edge = data[data.keys[1]]
-    end = data[data.keys[2]]
+    start = data[list(data.keys())[0]]
+    edge = data[list(data.keys())[1]]
+    end = data[list(data.keys())[2]]
     
     unique_node = np.unique(start + end)
     for node in unique_node:
