@@ -1,6 +1,5 @@
 StartNode,Edge,EndNode
 MAPK8,up-regulates,IRF3
-MAP2K6,up-regulates activity,MAP2K6
 MAP2K6,up-regulates activity,MAPK14
 MAP2K7,up-regulates,MAPK8
 SARM1,down-regulates,TICAM1
@@ -27,9 +26,8 @@ MEK1/2,up-regulates,ERK1/2
 TLR4,up-regulates activity,TICAM2
 TLR4,up-regulates activity,TIRAP
 TLR4,up-regulates activity,TICAM1
-LPS,up-regulates activity,TLRs
+LPS,up-regulates activity,TLR4
 MAP3K7,down-regulates quantity by destabilization,NFKBIA
-MAP3K7,up-regulates activity,MAP2K6
 MAP3K7,up-regulates activity,MAP2K6
 MAP3K7,up-regulates activity,IKK-complex
 MAP3K7,up-regulates activity,MAP2K3
