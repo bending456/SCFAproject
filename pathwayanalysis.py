@@ -130,3 +130,28 @@ def string_api(method,
 
   return string_set, results
 
+def drawer(pairset,output):
+  G = Digraph('G', filename=output+'.gv',format='png',
+              node_attr={'color': 'green', 'style': 'filled','shape':'box'})
+
+  raw_node = []
+  for pair in pairset:
+    raw_node.append(pair[0])
+    raw_node.append(pair[1])
+
+  unique_node = np.unique(raw_node)
+
+  for node in unique_node:
+    #G.attr('node', shape='box',style='filled',color='black')
+    G.node(node)
+
+  for pair in pairset:
+    #G.attr('edge',color='black',style='solid')
+    G.edge(pair[0],pair[1])
+
+  G.view()
+  G.render(output,view=True)
+
+  Image(output+'.png')
+
+  return
