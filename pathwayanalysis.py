@@ -55,7 +55,7 @@ def drawerForAll(data):
         else:
             G.attr('edge',color='red',style='dashed',arrowhead='tee')
         G.edge(j,end[i])
-        G2.add_edge(j,end[i])
+        G2.add_edge(j,end[i],label=edge[i])
 
     G2.edges()
     
