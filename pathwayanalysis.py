@@ -83,15 +83,6 @@ def string_api(method,
   # Construct URL for STRINGdb
   request_url = "/".join([string_api_url, output_format, method])
   
-  # Storing receptors from the receptorlist.txt file 
-  with open('/content/pathwayanalysis/receptorlist.txt','r') as f:
-     s = f.read().strip().split('\n') ##It is stripping the data from the API and taking into account white spaces ~DAVID~
-
-  receptor_list = []
-  for r in s:
-    l = r.split(', ')
-    receptor_list.append(l[0])
-
   outfile = open(method+'_output-RAW.txt', 'w')
 
   params = {
