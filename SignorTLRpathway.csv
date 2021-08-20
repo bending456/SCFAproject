@@ -40,7 +40,7 @@ IKK-complex,up-regulates,NFKB1
 NFKB1,up-regulates,Immune_response
 NFKB1,up-regulates,Interferon_Production
 NFKBIA,down-regulates activity,NFKB1
-ABBR2,up-regulates,NFKBIA
+ARRB,up-regulates,NFKBIA
 HDAC3,up-regulates,NFKB1
 NFKB1,up-regulates,NLRP3
 NLRP3,up-regulates,CASP1
