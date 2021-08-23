@@ -120,13 +120,18 @@ def string_api(method,
 
   Receptors_NCBI = dataextract('Receptor_NCBI.csv') # ['Symbol']
   Receptors_NCBI_list = Receptors_NCBI['Symbol']
+  Receptor_List = ['CCR3','CD40', 'CD81', 'EGFR', 'FAS', 'IFNGR1',
+                   'IFNGR2', 'IL10RA', 'IL1R1', 'IL4R', 'IL6R', 'LIFR', 'LTBR', 
+                   'TLR4', 'TNFRSF13C', 'TNFRSF1A', 'TNFRSF1B', 'CXCR4', 'CXCR2', 'CCR1', 
+                   'CCR5', 'P2Y1', 'P2Y12', 'P2X7', 'FFAR2', 'FFAR3', 'HADHA']
 
   #create edge list in a set form for STRING database retrieval
   for key in string_dict:
     # iterate through set
     for i in string_dict[key]:
       if i not in Receptors_NCBI_list:
-        string_set.add((key, i))
+        if i not in Receptor_List:
+          string_set.add((key, i))
 
   #write out to files
   for i in string_set:
