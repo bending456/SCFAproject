@@ -118,11 +118,15 @@ def string_api(method,
   string_output_file = open('STRING_edge_list.txt','w')
   string_set = set()
 
+  Receptors_NCBI = dataextract('Receptor_NCBI.csv') # ['Symbol']
+  Receptors_NCBI_list = Receptors_NCBI['Symbol']
+
   #create edge list in a set form for STRING database retrieval
   for key in string_dict:
     # iterate through set
     for i in string_dict[key]:
-      string_set.add((key, i))
+      if i not in Receptors_NCBI_list:
+        string_set.add((key, i))
 
   #write out to files
   for i in string_set:
