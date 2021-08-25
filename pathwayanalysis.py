@@ -69,7 +69,8 @@ def drawerForAll(data):
 
 def string_api(method,
                identifier,
-               NoOfLim):
+               NoOfLim,
+               receptorSearch):
   '''
   methods should be among these
   1. interaction_partners
@@ -123,15 +124,19 @@ def string_api(method,
   Receptor_List = ['CCR3','CD40', 'CD81', 'EGFR', 'FAS', 'IFNGR1',
                    'IFNGR2', 'IL10RA', 'IL1R1', 'IL4R', 'IL6R', 'LIFR', 'LTBR', 
                    'TLR4', 'TNFRSF13C', 'TNFRSF1A', 'TNFRSF1B', 'CXCR4', 'CXCR2', 'CCR1', 
-                   'CCR5', 'P2Y1', 'P2Y12', 'P2X7', 'FFAR2', 'FFAR3', 'HADHA']
+                   'CCR5', 'P2Y1', 'P2Y12', 'P2X7', 'FFAR2', 'FFAR3', 'HADHA','FFAR4']
 
   #create edge list in a set form for STRING database retrieval
   for key in string_dict:
     # iterate through set
     for i in string_dict[key]:
-      if i not in Receptors_NCBI_list:
-        if i not in Receptor_List:
-          string_set.add((key, i))
+      if receptorSearch:
+
+        if i not in Receptors_NCBI_list:
+          if i not in Receptor_List:
+            string_set.add((key, i))
+      else:
+        string_set.add((key,i))
 
   #write out to files
   for i in string_set:
@@ -164,3 +169,89 @@ def drawer(pairset,output):
   Image(output+'.png')
 
   return
+
+def analysisByNetworkX(G,targetGene):
+  path2 = nx.all_simple_paths(G,'TLR4','Immune_response')
+  path = list(path2)
+
+  PathNum = 1
+  Summary = {'Path':[],
+            'PathNum':[],
+            'PathLength':[]}
+  for i,j in enumerate(path):
+    checker = 1 
+    pair = set()
+    if targetGene in j: # <---- choosing specific pathways
+      for n,k in enumerate(j):
+        if n < len(j)-1:
+          edgeFeature = G.get_edge_data(k,j[n+1])
+          if 'up' in edgeFeature['label']:
+            feature = 1
+          else:
+            feature = -1
+            pair.add((k,j[n+1]))
+          checker = checker * feature
+
+      Summary['Path'].append(j)
+      Summary['PathNum'].append(PathNum)
+      Summary['PathLength'].append(len(j))
+      if checker < 0:
+        print('Path #',str(PathNum))
+        print(j,": Suppresing Immune Response")
+        print("Length: ",len(j))
+        print(pair,'\n')
+        PathNum += 1 
+      else:
+        print('Path #',str(PathNum))
+        print(j,": Promoting Immune Response")
+        print("Length: ",len(j))
+        PathNum += 1
+        for i in pair:
+          print(i[0],"------------------|",i[1])
+        print('\n')
+
+  return Summary
+
+def findShortestPath(Summary):
+  for i,j in enumerate(Summary['PathLength']):
+    if i == 0:
+      short = j 
+    else:
+      if j < short:
+        short = j
+        shortNum = i
+    
+    if i == len(Summary['PathLength'])-1:
+      print('Path #',Summary['PathNum'][shortNum])
+      print(Summary['Path'][shortNum])
+
+  return shortNum
+
+def search(targetName,midtargetName,endtargetName,numJump,cutoff):
+  [string_set, difference] = string_api('network',targetName,numJump,True)
+  
+  listNode = []
+  for pair in string_set:
+    listNode.append(pair[0])
+    listNode.append(pair[1])
+  
+  G = nx.DiGraph()
+  for node in np.unique(listNode):
+    G.add_node(node)
+  G.nodes()
+  for pair in string_set:
+    G.add_edge(pair[0],pair[1])
+  G.edges()
+
+  path = nx.all_simple_paths(G,targetName,endtargetName,cutoff=cutoff)
+  for i in path:
+    j = 0
+    if midtargetName in i:
+      print(i)
+      j += 1
+      if j == 1:
+        outcome = i
+      else:
+        outcome.append(i)
+
+  return outcome
