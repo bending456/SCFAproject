@@ -65,7 +65,7 @@ def drawerForAll(data):
 
     
 
-    return G2
+    return G2, G
 
 def string_api(method,
                identifier,
