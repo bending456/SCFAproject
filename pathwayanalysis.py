@@ -278,6 +278,45 @@ def search2(listNode,string_set,targetName,midtargetName,endtargetName,cutoff):
         j += 1
       else:
         outcome.append(list(i))
-      print(outcome)
 
   return outcome
+
+def GrandSearch(startNodeList,numJump,MidProt,EndProt,CutOff):
+  
+  listNode = []
+  string_set_total = set()
+  
+  for carrier in startNodeList:
+    [string_set, difference] = string_api('network',carrier,400,False)
+    for pair in string_set:
+      listNode.append(pair[0])
+      listNode.append(pair[1])
+      string_set_total.add(pair)
+  
+  listNode = list(np.unique(listNode))
+  listNode_old = listNode.copy()
+  listNode_updated = listNode.copy()
+
+  i = 0
+  while i < numJump:
+    for node in listNode_old:
+      [string_set,difference] = string_api('interaction_partners',node,10,False)
+      for pair in string_set:
+        listNode_updated.append(pair[0])
+        listNode_updated.append(pair[1])
+        string_set_total.add(pair)
+      listNode_updated = list(np.unique(listNode_updated))
+    listNode_old = listNode_updated.copy()
+    i += 1
+
+  collected_path = {}
+
+  for carrier in startNodeList:
+    try:
+      path = search2(listNode_updated,string_set_total,carrier,MidProt,EndProt,CutOff)
+      collected_path[carrier] = path
+    except:
+      print(carrier+'-mediated pathway may not include '+MidProt+' and '+EndProt+' within the current condtion')
+
+
+  return string_set_total, collected_path
