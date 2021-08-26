@@ -273,7 +273,7 @@ def search2(listNode,string_set,targetName,midtargetName,endtargetName,cutoff):
   for i in path:
     j = 0
     if midtargetName in i:
-      print(i)
+      #print(i)
       j += 1
       if j == 1:
         outcome = i
