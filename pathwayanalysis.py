@@ -90,6 +90,7 @@ def string_api(method,
             "identifiers" : "\r".join(["s"]), # your protein list
             "species" : 9606, # species NCBI identifier  #homo sapiens
             "echo_query" : 1, # see your input identifiers in the output  #???
+            "required_score" : 0,
             "limit" : NoOfLim # this determines the size of searching expansion - It seems a little bit arbitrary to determine the optimum number for the searching expansion 
           }
   params["identifiers"]=identifier #file to write to, named based on method used above
