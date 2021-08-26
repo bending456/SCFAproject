@@ -270,14 +270,14 @@ def search2(listNode,string_set,targetName,midtargetName,endtargetName,cutoff):
   G.edges()
   H = G.to_undirected()
   path = nx.all_simple_paths(H,targetName,endtargetName,cutoff=cutoff)
+  j = 0
   for i in path:
-    j = 0
     if midtargetName in i:
-      #print(i)
-      j += 1
-      if j == 1:
-        outcome = i
+      if j == 0:
+        outcome = [list(i)]
+        j += 1
       else:
-        outcome.append(i)
+        outcome.append(list(i))
+      print(outcome)
 
   return outcome
