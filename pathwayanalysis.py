@@ -244,7 +244,32 @@ def search(targetName,midtargetName,endtargetName,numJump,cutoff):
     G.add_edge(pair[0],pair[1])
   G.edges()
 
-  path = nx.all_simple_paths(G,targetName,endtargetName,cutoff=cutoff)
+  H = G.to_undirected()
+  path = nx.all_simple_paths(H,targetName,endtargetName,cutoff=cutoff)
+  for i in path:
+    j = 0
+    if midtargetName in i:
+      print(i)
+      j += 1
+      if j == 1:
+        outcome = i
+      else:
+        outcome.append(i)
+
+  return outcome
+
+
+def search2(listNode,string_set,targetName,midtargetName,endtargetName,cutoff):
+  
+  G = nx.DiGraph()
+  for node in listNode:
+    G.add_node(node)
+  G.nodes()
+  for pair in string_set:
+    G.add_edge(pair[0],pair[1])
+  G.edges()
+  H = G.to_undirected()
+  path = nx.all_simple_paths(H,targetName,endtargetName,cutoff=cutoff)
   for i in path:
     j = 0
     if midtargetName in i:
